@@ -1,0 +1,152 @@
+/*CYPHER OBJECTS - CSS*/
+#cypherLoginForm a { color: #000; text-decoration: underline; }
+
+#cypherLoginForm a:hover { color: #ff5f09; }
+
+#cypherLoginForm p, 
+#cypherRecoverPassForm p,
+#cypherUserAccountForm p,
+#cypherNewsletterForm p,
+#cypherTestimonialForm p,
+#cypherPreownedForm p,
+#cypherAccountForm p { padding-left: 2px; }
+
+#cypherAccountForm select { border: solid 1px gray; padding: 2px; }
+
+#cypherRegistrationForm img { margin-top: 4px; margin-bottom: 4px; }
+
+#cypherBookingForm, 
+#cypherEnquiryForm { 
+    padding: 8px 12px 12px 12px; 
+    background-color: #000;
+    border: solid 4px #999; 
+    border-radius: 4px; 
+}
+
+#cypherBookingForm h3, 
+#cypherEnquiryForm h3 { margin-top: 0px; }
+
+#cypherBookingForm .col-label, 
+#cypherEnquiryForm .col-label { color: #fff; width: 120px; }
+
+#cypherBookingForm .form-field, 
+#cypherEnquiryForm .form-field {
+    width: 280px;
+    border: solid 1px #999;
+    font-size: 11px;
+    padding: 2px 2px 2px 2px;
+}
+
+#cypherBookingForm table td,
+#cypherEnquiryForm table td { vertical-align: middle; }
+
+#cypherBookingForm .crudForm,
+#cypherEnquiryForm .crudForm { margin-top: 10px; text-align: center; }
+
+#cypherBookingForm .bookingButton {
+    width: 106px;
+    height: 37px;
+    cursor: pointer;
+    cursor: default;
+    border: none;
+    background-image: url('../images/book-button.png');	
+    background-color: transparent;
+}
+
+#cypherEnquiryForm .enquiryButton {
+    width: 106px;
+    height: 37px;
+    cursor: pointer;
+    cursor: default;
+    border: none;
+    background-image: url('../images/enquiry-button.png');	
+    background-color: transparent;
+}
+
+#cypherEnquiryForm .closeButton,
+#cypherBookingForm .closeButton {
+    width: 106px;
+    height: 37px;
+    cursor: pointer;
+    cursor: default;
+    border: none;
+    background-image: url('../images/close-button.png');	
+    background-color: transparent;
+}
+
+#cypherEnquiryForm .cancelButton,
+#cypherBookingForm .cancelButton {
+    width: 106px;
+    height: 37px;
+    cursor: pointer;
+    cursor: default;
+    border: none;
+    background-image: url('../images/cancel-button.png');	
+    background-color: transparent;
+}
+
+#cypherUnsubscribeForm .unsubscribeButton {
+    width: 106px;
+    height: 37px;
+    cursor: pointer;
+    cursor: default;
+    border: none;
+    background-image: url('../images/unsubscribe-button.png');	
+    background-color: transparent;
+}
+
+.cypher-LoginField, .cypher-RegisterField {
+    width: 220px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border: solid 1px Gray;
+}
+
+.cypher-FormField {
+    width: 250px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border: solid 1px Gray;
+}
+
+.cypherLogs { margin-right: 0px; border-left: solid 1px #222; }
+
+#cypherAdmin-container {
+    width: auto;
+    border: solid 1px Gray;
+    padding-bottom: 20px;
+    padding-left: 8px;	
+}
+
+#cypherAdmin-container span { padding-left: 2px; }
+
+#cypherAdmin-container span a { color: #000; text-decoration: underline; }
+#cypherAdmin-container span a:hover { color: #ff5f09; }
+
+#cypherAdmin-container .log_buttons { margin-top: 12px; }
+
+#cypher-dataTable a {
+    color: #006699;
+    cursor: pointer;
+    cursor: default;
+}
+
+#cypher-dataTable a:hover { color: #ff5f09; text-decoration: none; }
+
+#cypher-dataTable_length, 
+#cypher-dataTable_info, 
+#cypher-dataTable_filter { color: #ccc; }
+
+.cypher-sideimg { margin-top: 10px; margin-bottom: 10px; }
+
+.cypher-sidelinks { 
+    width: 230px;
+    position: relative;
+    top: -5px;
+}
+
+.cypher-sidelinks a { padding-right: 240px; padding-bottom: 44px; }
