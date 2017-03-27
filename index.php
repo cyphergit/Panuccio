@@ -14,7 +14,11 @@
  
         <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="node_modules/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="node_modules/jquery-ui/themes/base/all.css" rel="stylesheet">
         <link href="styles/panuccio.css" rel="stylesheet">
+        
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>        
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
     <body>
@@ -66,10 +70,10 @@
             </div>
         </footer>        
 
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/jquery-ui/external/jquery-1.11.0/jquery.js"></script>
+        <script src="node_modules/jquery-ui/ui/widgets/datepicker.js"></script>
         <script src="scripts/panuccio.js"></script>
-        
-        <script src='https://www.google.com/recaptcha/api.js'></script>        
     </body>
 </html>
