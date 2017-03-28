@@ -11,7 +11,10 @@
                 <p>
                     Here is what Panuccio Autos Pre Owned has to offer:
                 </p>
-                <?php include('includes/cypher_preowneditem_table.php'); ?>                
+                <?php //include 'includes/cypher_preowneditem_table.php'; ?>
+                <p>
+                    <em>There are no items yet.</em>
+                </p>                
             </div>
         </div>
     </div>      

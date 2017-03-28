@@ -18,3 +18,15 @@
                     </a>
                 </li>
             </ul>
+<row class="social">
+    <div class="col-sm-12">
+        <a href="https://www.facebook.com/#!/profile.php?id=1699617842" data-toggle="tooltip" target="_blank" title="Panuccio Autos Facebook">
+            <span class="fa fa-facebook-square fa-3x"></span>
+            <span>Like us on Facebook</span>
+        </a>
+        <a href="index.php?pg=enquiry" data-toggle="tooltip" class="floater-item" title="Enquiry">
+            <span class="fa fa-envelope fa-3x"></span>
+            <span></span>
+        </a>
+    </div>
+</row>

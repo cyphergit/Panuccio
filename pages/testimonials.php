@@ -11,7 +11,7 @@
                 <p>
                     Here are what our clients has to say about Panuccio Autos:
                 </p>
-                <?php include('includes/cypher_testimonials.php'); ?>                              
+                <?php include('includes/testimonials.php'); ?>                              
             </div>
         </div>
     </div>            

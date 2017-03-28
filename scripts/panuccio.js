@@ -1,9 +1,34 @@
 $(function () {    
-    var loadBanner = function() {
+    var init_banner = function() {
         setInterval("slideSwitch()", 7200);
     };
-    loadBanner();
+    init_banner();
+    
+    var init_activepage = function() {
+        var activePage = $('.active-page');
+        
+        if (activePage.length !== 0) {
+            $.each($('#navbar ul li'), function() {
+                var alt = $(this).attr('alt');
+                
+                if (activePage.text() === alt) {
+                    $(this).addClass('active');
+                    
+                } else if (activePage.text() === "" && alt === 'home') {
+                    $(this).addClass('active');
 
+                } else if (activePage.text() === "booking" || activePage.text() === "enquiry") {
+                    if (alt == 'contact') { $(this).addClass('active'); }
+                    
+                } else {
+                    $(this).removeClass('active');
+                }
+            });           
+        }
+    };
+    init_activepage();
+    
+    //Initiate forms
     var submit = $('#submit');
     var forms = {
         unsubscribe: $('#unsubscribe'),
@@ -11,7 +36,7 @@ $(function () {
         enquiry: $('#enquiry')
     };    
     
-    //Unsubscribe
+    ////Unsubscribe
     var loadUnsubscribe = function() {
         var fields = { 
             email: $('#email'),
@@ -19,7 +44,10 @@ $(function () {
         };
         
         submit.on('click', function() {
-            var collection = { email: fields.email.val() };
+            var collection = { 
+                email: fields.email.val(),
+                form: "unsubscribe"
+            };
             
             if (validateField(fields.email) === false) {
                 alert("Please provide your e-mail address!");
@@ -37,12 +65,12 @@ $(function () {
             }
             
             processData(collection, "common/unsubscribe.php");
-            //resetForm( forms.unsubscribe, false );            
+            resetForm( forms.unsubscribe, false );            
         });
     };    
     if (forms.unsubscribe.length !== 0) { loadUnsubscribe(); }
 
-    //Enquiry
+    ////Enquiry
     var loadEnquiry = function() {
         var fields = {
             fname: $('#txtFirstname'),
@@ -51,7 +79,8 @@ $(function () {
             subject: $('#txtSubject'),
             message: $('#txtMessages'),
             subscribe: $('#txtNewsletter'),
-            recaptcha: function() { return grecaptcha.getResponse(); }
+            recaptcha: function() { return grecaptcha.getResponse(); },
+            form: "enquiry"
         };
 
         submit.on('click', function() {
@@ -120,14 +149,12 @@ $(function () {
     };
     if (forms.enquiry.length !== 0 ) { loadEnquiry(); }    
     
-    //Booking
+    ////Booking
     var loadBooking = function() {
         var fields = {
             fname: $('#txtFirstname'),
             lname: $('#txtLastname'),
             email: $('#txtEmail'),
-            subject: $('#txtSubject'),
-            message: $('#txtMessages'),
             contact: $('#txtContact'),
             address: $('#txtLocAddress'),
             carModel: $('#txtCarModel'),
@@ -136,7 +163,8 @@ $(function () {
             serviceRequest: $('#txtServiceRequest'),
             preferredDate: $('#txtPrefDate'),
             subscribe: $('#txtNewsletter'),
-            recaptcha: function() { return grecaptcha.getResponse(); }
+            recaptcha: function() { return grecaptcha.getResponse(); },
+            form: "booking"
         };
         
         fields.preferredDate.datepicker({
@@ -244,11 +272,8 @@ $(function () {
     var subscribe = $('#chkNewsletter');
     if (subscribe.length != 0) {
         subscribe.on('click', function() {
-            if ($(this).is(':checked')) {
-                $('#txtNewsletter').val(1);
-            } else {
-                $('#txtNewsletter').val(0);                
-            }
+            if ($(this).is(':checked')) { $('#txtNewsletter').val(1); } 
+            else { $('#txtNewsletter').val(0); }
         });        
     }    
 });

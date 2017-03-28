@@ -1,4 +1,3 @@
-<script src="scripts/booking.js"></script>
 <div class="row">
     <div class="col-sm-12">
         <div class="col-sm-4">

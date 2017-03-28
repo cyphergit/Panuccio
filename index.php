@@ -38,13 +38,13 @@
                 <!--navigation-->
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.php">Home</a></li>
-                        <li><a href="index.php?pg=about">About Us</a></li>
-                        <li><a href="index.php?pg=services">Services</a></li>
-                        <li><a href="index.php?pg=parts">Parts</a></li>
-                        <li><a href="index.php?pg=testimonials">Testimonials</a></li>
-                        <li><a href="index.php?pg=preowned">Pre-owned</a></li>
-                        <li><a href="index.php?pg=contact">Contact Us</a></li>
+                        <li alt="home"><a href="index.php">Home</a></li>
+                        <li alt="about"><a href="index.php?pg=about">About Us</a></li>
+                        <li alt="services"><a href="index.php?pg=services">Services</a></li>
+                        <li alt="parts"><a href="index.php?pg=parts">Parts</a></li>
+                        <li alt="testimonials"><a href="index.php?pg=testimonials">Testimonials</a></li>
+                        <li alt="preowned"><a href="index.php?pg=preowned">Pre-owned</a></li>
+                        <li alt="contact"><a href="index.php?pg=contact">Contact Us</a></li>
                     </ul>
                 </div>
                 <!--navigation-->
@@ -52,6 +52,7 @@
         </nav>
 
         <div class="container">
+            <div class="active-page"><?php echo $_GET['pg']; ?></div>
             <div class="content-wrapper">
                 <div class="row">
                     <?php include 'includes/banner.php';?>
@@ -69,7 +70,6 @@
                 </p>
             </div>
         </footer>        
-
 
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/jquery-ui/external/jquery-1.11.0/jquery.js"></script>
