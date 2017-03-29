@@ -1,12 +1,14 @@
 <?php
 
-include '../conf.inc.php';
+include '../config/conf.inc.php';
 include '../includes/functions.php';
+include '../classes/SystemCounter.php';
+include '../classes/Customers.php';
 
-$form           =   $_POST['form'];
-$email          =   $_POST['email'];
-$fname          =   $_POST['fname'];
-$lname          =   $_POST['lname'];
+$form           =   "enquiry";
+$email          =   "test@email.com";
+$fname          =   "JC";
+$lname          =   "Santos";
 $subject        =   $_POST['subject'];
 $message        =   $_POST['message'];
 $contact        =   $_POST['contact'];
@@ -16,7 +18,26 @@ $transmission   =   $_POST['transmission'];
 $fuelType       =   $_POST['fuelType'];
 $serviceRequest =   $_POST['serviceRequest'];
 $preferredDate  =   $_POST['preferredDate'];
-$subscription   =   $_POST['subscribe'];
+$subscription   =   "1";
+
+//$form           =   $_POST['form'];
+//$email          =   $_POST['email'];
+//$fname          =   $_POST['fname'];
+//$lname          =   $_POST['lname'];
+//$subject        =   $_POST['subject'];
+//$message        =   $_POST['message'];
+//$contact        =   $_POST['contact'];
+//$address        =   $_POST['address'];
+//$carModel       =   $_POST['carModel'];
+//$transmission   =   $_POST['transmission'];
+//$fuelType       =   $_POST['fuelType'];
+//$serviceRequest =   $_POST['serviceRequest'];
+//$preferredDate  =   $_POST['preferredDate'];
+//$subscription   =   $_POST['subscribe'];
+
+$customers = new Customers();
+$customers->conn = $connect;
+$customers->email = $email;
 
 if (IsInjected($email) && IsInjected($subject)) {
     echo "There is an error in your registration. Please try again!";
@@ -24,38 +45,45 @@ if (IsInjected($email) && IsInjected($subject)) {
 }
 
 if ($subscription == "" || $subscription == null) {
-    $customer_subscription = 0;
+    $customer_subscription = "0";
+} else {
+    $customer_subscription = $subscription;
 }
 
 switch($form) {
     case "unsubscribe":        
-        $query = "SELECT Email, NewsletterSubscription FROM Customers WHERE Email='".$_POST['email']."' LIMIT 1";
-        mysqli_query($link, $query);
+        if ($customers->HasRecord()) {
+            if($customers->UpdateCustomerSubscription($customer_subscription)) {
+                echo "send notif!";
+            }
+        } else {
+            echo "no record!";
+        }
         break;
-    
-    case "booking":
-        break;
-    
+ 
     case "enquiry":
-        break;
+        $counter = new SystemCounters();
+        $counter->conn = $connect;
+        $counter->counterField = "UserCustomerID";
+        
+        if (!$customers->HasRecord()) {
+            $new_customer = new Customers();
+            $new_customer->customerId = $counter->IDCount();
+            $new_customer->email = $email;
+            $new_customer->firstname = $fname;
+            $new_customer->lastname = $lname;
+            $new_customer->subscription = $customer_subscription;
+            
+            $counter->UpdateIDCount($counter->IDCount());
+            
+            echo $customers->NewCustomer($new_customer);   
+            
+        } else {
+            echo "record existing!";
+        }
+        break;        
+        
+    case "booking":        
+        break;    
 }
-//  include('../conf.inc.php');  
-//  include('../modules/cypher_mod_encryp.php');
-//
-//  $username = $_POST['txtUsername'];
-//  $password = $_POST['txtPassword'];
-//  
-//  $q = "SELECT UserNumber, Username, Password FROM `UserLogin` WHERE UserName = '$username' AND Password = '$password' AND SystemLevel <> '1' AND Status = '1'";
-//  $r = mysql_query($q) or die(mysql_error());
-//    
-//	if(mysql_num_rows($r) == 1) 
-//  {
-//    $row = mysql_fetch_assoc($r);
-//    $_SESSION['usernumber'] = $row['UserNumber'];
-//    $_SESSION['username'] = $row['Username'];
-//    $_SESSION['logged'] = 1; 
-//      
-//    header("Location: http://localhost/Panuccio/account/");
-//    exit();
-//	} 
 ?>

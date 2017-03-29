@@ -1,9 +1,11 @@
 $(function () {    
+    //Initiate website banner
     var init_banner = function() {
         setInterval("slideSwitch()", 7200);
     };
     init_banner();
     
+    //Initiate website active page
     var init_activepage = function() {
         var activePage = $('.active-page');
         
