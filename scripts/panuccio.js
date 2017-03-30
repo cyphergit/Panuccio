@@ -66,8 +66,8 @@ $(function () {
                 return false;
             }
             
-            processData(collection, "common/unsubscribe.php");
-            resetForm( forms.unsubscribe, false );            
+            processData(collection, "common/formPost.php");
+            resetForm( forms.unsubscribe, false );
         });
     };    
     if (forms.unsubscribe.length !== 0) { loadUnsubscribe(); }
@@ -81,8 +81,7 @@ $(function () {
             subject: $('#txtSubject'),
             message: $('#txtMessages'),
             subscribe: $('#txtNewsletter'),
-            recaptcha: function() { return grecaptcha.getResponse(); },
-            form: "enquiry"
+            recaptcha: function() { return grecaptcha.getResponse(); }
         };
 
         submit.on('click', function() {
@@ -92,7 +91,8 @@ $(function () {
                 email: fields.email.val(),
                 subject: fields.subject.val(),
                 message: fields.message.val(),
-                subscribe: fields.subscribe.val()
+                subscribe: fields.subscribe.val(),
+                form: "enquiry"
             };
             
             if (validateField(fields.fname) == false) {
@@ -146,7 +146,8 @@ $(function () {
                 return false;
             }
             
-            processData(collection, "common/enquiry.php");            
+            processData(collection, "common/formPost.php");
+            //resetForm( forms.enquiry, false );
         });
     };
     if (forms.enquiry.length !== 0 ) { loadEnquiry(); }    
@@ -165,8 +166,7 @@ $(function () {
             serviceRequest: $('#txtServiceRequest'),
             preferredDate: $('#txtPrefDate'),
             subscribe: $('#txtNewsletter'),
-            recaptcha: function() { return grecaptcha.getResponse(); },
-            form: "booking"
+            recaptcha: function() { return grecaptcha.getResponse(); }
         };
         
         fields.preferredDate.datepicker({
@@ -185,7 +185,8 @@ $(function () {
                 fuelType: fields.fuelType.val(),
                 serviceRequest: fields.serviceRequest.val(),
                 preferredDate: fields.preferredDate.val(),
-                subscribe: fields.subscribe.val()
+                subscribe: fields.subscribe.val(),
+                form: "booking"
             };
             
             if (validateField(fields.fname) == false) {
@@ -265,7 +266,8 @@ $(function () {
                 return false;
             }
             
-            processData(collection, "common/booking.php");               
+            processData(collection, "common/formPost.php");
+            resetForm( forms.booking, false );
         });
     };    
     if (forms.booking.length !== 0 ) { loadBooking(); }
@@ -327,13 +329,17 @@ function recaptchaValidation(response) {
 
 function processData(dataCollection, urlString) {
     //send enquiry via ajax
-    $.ajax({
-        type: "POST",
-        url: urlString,
-        data: dataCollection
-    }).done(function (result) {
-        alert(result);
+    $.post(urlString, dataCollection, function(data) {
+       var obj = JSON.parse(data);
+       window.location = "index.php?pg=result&frm=" + obj.form + "&r=" + obj.result;
     });
+//    $.ajax({
+//        type: "POST",
+//        url: urlString,
+//        data: dataCollection
+//    }).done(function (result) {
+//        alert(result);
+//    });
 }
 
 //reset form by setting labels in fields

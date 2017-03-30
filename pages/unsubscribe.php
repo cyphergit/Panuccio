@@ -15,7 +15,7 @@
                     <div class="unsubscribe-wrapper">
                         <div class="unsubscribe-form-wrapper">
                             <h3>Provide your email below:</h3>
-                            <form id="unsubscribe" method="POST">
+                            <div id="unsubscribe">
                                 <div class="fields unsubscribe-form-field">
                                     <div class="row">
                                         <div class="col-sm-4">E-mail Address:</div>
@@ -36,7 +36,7 @@
                                         </div>
                                     </div>          
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>                          
                 </div>

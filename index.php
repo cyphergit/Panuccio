@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="author" content="">
         <meta name="copyright" content="Copyright  2017, CyperDesign. All rights reserved.">
-        <link rel="icon" href="favicon.ico">
+        <link rel="icon" href="images/favicon.ico">
 
         <title>Panuccio Autos | Vehicle Repair and service center | Land Rover specialist in Bunbury Western Australia</title>
  

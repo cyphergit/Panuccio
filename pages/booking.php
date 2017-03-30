@@ -9,7 +9,7 @@
             <div class="content">
                 <h2>Booking</h2>
                 <p>All fields are required.</p>
-                <form id="booking">
+                <div id="booking">
                     <div class="fields">
                         <div class="row">
                             <div class="col-sm-4">First Name:</div>
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                </form>                
+                </div>                
             </div>
         </div>
     </div>

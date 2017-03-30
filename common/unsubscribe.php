@@ -2,8 +2,8 @@
 
 include '../config/conf.inc.php';
 include '../includes/functions.php';
-include '../classes/SystemCounter.php';
-include '../classes/Customers.php';
+include '../classes/system_counter.php';
+include '../classes/customers.php';
 
 $form           =   "enquiry";
 $email          =   "test@email.com";
@@ -35,9 +35,9 @@ $subscription   =   "1";
 //$preferredDate  =   $_POST['preferredDate'];
 //$subscription   =   $_POST['subscribe'];
 
-$customers = new Customers();
-$customers->conn = $connect;
-$customers->email = $email;
+$customer = new Customers();
+$customer->conn = $connect;
+$customer->email = $email;
 
 if (IsInjected($email) && IsInjected($subject)) {
     echo "There is an error in your registration. Please try again!";
@@ -52,8 +52,8 @@ if ($subscription == "" || $subscription == null) {
 
 switch($form) {
     case "unsubscribe":        
-        if ($customers->HasRecord()) {
-            if($customers->UpdateCustomerSubscription($customer_subscription)) {
+        if ($customer->HasRecord()) {
+            if($customer->UpdateCustomerSubscription($customer_subscription)) {
                 echo "send notif!";
             }
         } else {
@@ -61,29 +61,62 @@ switch($form) {
         }
         break;
  
-    case "enquiry":
-        $counter = new SystemCounters();
-        $counter->conn = $connect;
-        $counter->counterField = "UserCustomerID";
-        
-        if (!$customers->HasRecord()) {
-            $new_customer = new Customers();
-            $new_customer->customerId = $counter->IDCount();
-            $new_customer->email = $email;
-            $new_customer->firstname = $fname;
-            $new_customer->lastname = $lname;
-            $new_customer->subscription = $customer_subscription;
-            
-            $counter->UpdateIDCount($counter->IDCount());
-            
-            echo $customers->NewCustomer($new_customer);   
-            
+    case "enquiry":        
+        if (!$customer->HasRecord()) {
+            if ($customer_subscription != 0) {
+                $counter = new SystemCounters();
+                $counter->conn = $connect;
+                $counter->counterField = "UserCustomerID";
+                
+                $new_customer = new Customers();
+                $new_customer->customerId = $counter->IDCount();
+                $new_customer->email = $email;
+                $new_customer->firstname = $fname;
+                $new_customer->lastname = $lname;
+                $new_customer->subscription = $customer_subscription;
+
+                $counter->UpdateIDCount($counter->IDCount());
+
+                echo $customer->NewCustomer($new_customer);
+                // send notification to customer
+            } else {
+                // send notification to customer
+            }           
         } else {
             echo "record existing!";
+            // send notification to customer
         }
         break;        
         
-    case "booking":        
+    case "booking":   
+        if (!$customer->HasRecord()) {
+            if ($customer_subscription != 0) {
+                $counter = new SystemCounters();
+                $counter->conn = $connect;
+                $counter->counterField = "UserCustomerID";
+                
+                $new_customer = new Customers();
+                $new_customer->customerId = $counter->IDCount();
+                $new_customer->email = $email;
+                $new_customer->firstname = $fname;
+                $new_customer->lastname = $lname;
+                $new_customer->telephone = $contact;
+                $new_customer->mobile = $contact;
+                $new_customer->street = $address;
+                $new_customer->subscription = $customer_subscription;
+
+                $counter->UpdateIDCount($counter->IDCount());
+
+                echo $customer->NewCustomer($new_customer);
+                // send notification to customer
+            } else {
+                // send notification to customer
+            }                       
+        } else {
+            echo "record existing!";
+            // send notification to customer
+        }
+        
         break;    
 }
 ?>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Encryption {
     var $skey = "CypherDesign"; // you can change it
 

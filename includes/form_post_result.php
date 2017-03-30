@@ -3,7 +3,7 @@ $form = $_GET['frm'];
 $result = $_GET['r'];
 
 switch($form) {
-    case "b":
+    case "booking":
         $title = "Booking";
         if ($result != "s") {
             $msg = "<span><span class='fa fa-remove fa-3x icon'></span>Error encountered during booking process. Please try it again.</span>";
@@ -13,7 +13,7 @@ switch($form) {
         }
         break;
     
-    case "u":
+    case "unsubscribe":
         $title = "Unsubscribe";
         if ($result != "s") {
             $msg = "<span><span class='fa fa-remove fa-3x icon'></span>Error encountered during the unsubscribe process. Please try it again.</span>";
@@ -22,7 +22,7 @@ switch($form) {
         }                
         break;
     
-    case "e":
+    case "enquiry":
         $title = "Enquiry";        
         if ($result != "s") {
             $msg = "<span><span class='fa fa-remove fa-3x icon'></span>Error encountered during booking process. Please try it again.</span>";
