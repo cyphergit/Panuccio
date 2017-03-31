@@ -14,17 +14,26 @@
                     </p>
                     <div class="unsubscribe-wrapper">
                         <div class="unsubscribe-form-wrapper">
-                            <h3>Provide your email below:</h3>
+                            <h3>
+                                Provide your email below.
+                                Required. (<span class="field-required">*</span>)
+                            </h3>
                             <div id="unsubscribe">
                                 <div class="fields unsubscribe-form-field">
                                     <div class="row">
-                                        <div class="col-sm-4">E-mail Address:</div>
+                                        <div class="col-sm-4">
+                                            E-mail Address:
+                                            <span class="field-required">*</span>
+                                        </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="email" name="email" class="form-control"/>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-4">reCAPTCHA:</div>
+                                        <div class="col-sm-4">
+                                            reCAPTCHA:
+                                            <span class="field-required">*</span>
+                                        </div>
                                         <div class="col-sm-4">
                                             <div class="g-recaptcha" data-sitekey="6LcPFRIUAAAAAJxC0XRTE9bdIkmi07fhwh55ACUD" id="recaptcha-enquiry"></div>
                                         </div>

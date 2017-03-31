@@ -11,7 +11,7 @@ $result = $_GET['r'];
         <div class="col-sm-8">
             <div class="content">
                 <?php
-                if ($result == s || $result == f) {
+                if ($result != "") {
                     include 'includes/form_post_result.php';                    
                 } else {
                     include 'includes/error.php';

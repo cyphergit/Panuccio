@@ -2,6 +2,7 @@
 
 include '../config/conf.inc.php';
 include '../includes/functions.php';
+include '../classes/encryption.php';
 include '../classes/system_counter.php';
 include '../classes/customers.php';
 include '../classes/email_notif.php';
@@ -46,10 +47,15 @@ function sendSubscriptionNotif($collection, $email) {
 }
 
 function resultToJson($form, $emailResult) {
+    $security = new Encryption();
+    
     if ($emailResult) { $result = "s"; } 
     else { $result = "f"; }
     
-    $value = array("form"=>$form, "result"=>$result);
+    $secured_form = $security->encode($form);
+    $secured_send_result = $security->encode($result);
+    
+    $value = array("form"=>$secured_form, "result"=>$secured_send_result);
     
     return json_encode($value);
 }
@@ -78,7 +84,8 @@ switch ($form) {
 
         if ($customer->HasRecord()) {
             if ($customer->UpdateCustomerSubscription($customer_subscription)) {
-                echo sendNotification($template, $email, "Unsubscribe");
+                $sent = sendNotification($template, $email, "Unsubscribe");
+                echo resultToJson($form, $sent);
             }
         }
         break;
@@ -107,20 +114,26 @@ switch ($form) {
                 $customer->NewCustomer($new_customer);
 
                 //Send notif to customer
-                //$member = sendSubscriptionNotif($collection, $email);
+                $member = sendSubscriptionNotif($collection, $email);
                 
                 //Send notif to admin
-                //$admin = sendNotification($enquiry_template, $admin_email, $enquiry_subject);
+                $admin = sendNotification($enquiry_template, $admin_email, $enquiry_subject);
+                
+                if ((!$admin) && (!$member)) { $sent = false; } 
+                else if (($admin) && ($member)) { $sent = true; }
+                
+                echo resultToJson($form, $sent);
 
             } else {
                 //Send notif to admin
-                echo resultToJson($form, true);
-                //echo sendNotification($enquiry_template, $admin_email, $enquiry_subject);
+                $sent = sendNotification($enquiry_template, $admin_email, $enquiry_subject);
+                if ($sent) { echo resultToJson($form, $sent); }
+                
             }
         } else {
             //Send notif to admin
-            echo "test";
-            //echo sendNotification($enquiry_template, $admin_email, $enquiry_subject);
+            $sent = sendNotification($enquiry_template, $admin_email, $enquiry_subject);
+            if ($sent) { echo resultToJson($form, $sent);  }
         }
         break;
 
@@ -150,21 +163,26 @@ switch ($form) {
 
                 $customer->NewCustomer($new_customer);
 
-                //Send notif to admin
-                $admin = sendNotification($booking_template, $admin_email, $booking_subject);
-
                 //Send notif to customer
                 $member = sendSubscriptionNotif($collection, $email);
                 
-                if (($admin) && ($member)) { echo true; }
+                //Send notif to admin
+                $admin = sendNotification($booking_template, $admin_email, $booking_subject);
+                
+                if ((!$admin) && (!$member)) { $sent = false; } 
+                else if (($admin) && ($member)) { $sent = true; }
+                
+                echo resultToJson($form, $sent);
                 
             } else {
                 //Send notif to admin
-                echo sendNotification($booking_template, $admin_email, $booking_subject);
+                $sent = sendNotification($booking_template, $admin_email, $booking_subject);
+                if ($sent) { echo resultToJson($form, $sent);  }
             }
         } else {
             //Send notif to admin
-            echo sendNotification($booking_template, $admin_email, $booking_subject);
+            $sent = sendNotification($booking_template, $admin_email, $booking_subject);
+            if ($sent) { echo resultToJson($form, $sent);  }
         }
         break;
 }

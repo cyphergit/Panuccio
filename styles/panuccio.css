@@ -47,8 +47,8 @@ body {
 body > .container { padding: 40px 15px 0; }
 
 .active-page { display: none; }
-
-.main-container { border: solid 1px red;}
+.field-required { color: red; }
+/*.main-container { border: solid 1px red;}*/
 
 .content-wrapper {
     width: 100%;

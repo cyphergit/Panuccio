@@ -1,6 +1,9 @@
 <?php
-$form = $_GET['frm'];
-$result = $_GET['r'];
+include 'classes/encryption.php';
+$security = new Encryption();
+
+$form = $security->decode($_GET['frm']);
+$result = $security->decode($_GET['r']);
 
 switch($form) {
     case "booking":

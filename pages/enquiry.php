@@ -8,41 +8,59 @@
         <div class="col-sm-8">
             <div class="content">
                 <h2>Enquiry</h2>
-                <p>All fields are required.</p>
+                <p>Please fill up the form. Required fields (<span class="field-required">*</span>)</p>
                 <div id="enquiry">  
                     <div class="fields">
                         <div class="row">
-                            <div class="col-sm-4">First Name:</div>
+                            <div class="col-sm-4">
+                                First Name:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
-                                <input id="txtFirstname" name="txtFirstname" class="form-control form-field" type="text"/>
+                                <input id="txtFirstname" name="txtFirstname" class="form-control form-field" type="text"/>                                
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Last Name:</div>
+                            <div class="col-sm-4">
+                                Last Name:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <input id="txtLastname" name="txtLastname" class="form-control form-field" type="text"/>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Email Address:</div>
+                            <div class="col-sm-4">
+                                Email Address:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
-                                <input id="txtEmail" name="txtEmail" class="form-control form-field" type="text"/>
+                                <input id="txtEmail" name="txtEmail" class="form-control form-field" type="text"/>                                
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Subject:</div>
+                            <div class="col-sm-4">
+                                Subject:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
-                                <input id="txtSubject" name="txtSubject" class="form-control form-field" type="text" value="Panuccio Autos - Online Enquiry"/>
+                                <input id="txtSubject" name="txtSubject" class="form-control form-field" type="text" value="Panuccio Autos - Online Enquiry"/>                                
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Message/Comments:</div>
+                            <div class="col-sm-4">
+                                Message:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
-                                <textarea id="txtMessages" name="txtMessages" class="form-control form-field"></textarea>
+                                <textarea id="txtMessages" name="txtMessages" class="form-control form-field"></textarea>                                
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">reCAPTCHA:</div>
+                            <div class="col-sm-4">
+                                reCAPTCHA:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-4">
                                 <div class="g-recaptcha" data-sitekey="6LcPFRIUAAAAAJxC0XRTE9bdIkmi07fhwh55ACUD" id="recaptcha-enquiry"></div>
                             </div>

@@ -8,35 +8,50 @@
         <div class="col-sm-8">
             <div class="content">
                 <h2>Booking</h2>
-                <p>All fields are required.</p>
+                <p>Please fill up the form. Required fields (<span class="field-required">*</span>)</p>
                 <div id="booking">
                     <div class="fields">
                         <div class="row">
-                            <div class="col-sm-4">First Name:</div>
+                            <div class="col-sm-4">
+                                First Name:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <input id="txtFirstname" name="txtFirstname" class="form-control form-field" type="text"/>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Last Name:</div>
+                            <div class="col-sm-4">
+                                Last Name:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <input id="txtLastname" name="txtLastname" class="form-control form-field" type="text"/>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Email Address:</div>
+                            <div class="col-sm-4">
+                                Email Address:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <input id="txtEmail" name="txtEmail" class="form-control form-field" type="text"/>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Contact No.:</div>
+                            <div class="col-sm-4">
+                                Contact No.:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <input id="txtContact" name="txtContact" class="form-control form-field" type="text"/>
                             </div>
                         </div> 
                         <div class="row">
-                            <div class="col-sm-4">Home Address:</div>
+                            <div class="col-sm-4">
+                                Home Address:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <textarea id="txtLocAddress" name="txtLocAddress" class="form-control form-field"></textarea>
                             </div>
@@ -46,13 +61,19 @@
                     <h3>Car Details</h3>
                     <div class="fields">
                         <div class="row">
-                            <div class="col-sm-4">Car Model:</div>
+                            <div class="col-sm-4">
+                                Car Model:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <input id="txtCarModel" name="txtCarModel" class="form-control form-field" type="text"/>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Transmission:</div>
+                            <div class="col-sm-4">
+                                Transmission:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <select id="selTransmission" name="selTransmission" class="form-control form-field">
                                     <option value="[Select Transmission]" selected="yes">[Select Transmission]</option>
@@ -62,7 +83,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">Fuel Type:</div>
+                            <div class="col-sm-4">
+                                Fuel Type:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <select id="selFuelType" name="selFuelType" class="form-control form-field">
                                     <option value="[Select Fuel Type]" selected="yes">[Select Fuel Type]</option>
@@ -77,7 +101,10 @@
                     <h3>Service Request</h3>
                     <div class="fields">
                         <div class="row">
-                            <div class="col-sm-4">(Eg. Chassis Upgrade)</div>
+                            <div class="col-sm-4">
+                                (Eg. Chassis Upgrade)
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <textarea id="txtServiceRequest" name="txtServiceRequest" class="form-control form-field"></textarea>
                             </div>
@@ -87,7 +114,10 @@
                     <h3>Service Schedule</h3>
                     <div class="fields">
                         <div class="row">
-                            <div class="col-sm-4">Preferred Date:</div>
+                            <div class="col-sm-4">
+                                Preferred Date:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-8">
                                 <input id="txtPrefDate" name="txtPrefDate" class="form-control form-field" type="text"/>
                             </div>
@@ -95,7 +125,10 @@
                         <hr>
                         <!--reCaptcha-->
                         <div class="row">
-                            <div class="col-sm-4">reCAPTCHA:</div>
+                            <div class="col-sm-4">
+                                reCAPTCHA:
+                                <span class="field-required">*</span>
+                            </div>
                             <div class="col-sm-4">
                                 <div class="g-recaptcha" data-sitekey="6LcPFRIUAAAAAJxC0XRTE9bdIkmi07fhwh55ACUD" id="recaptcha-enquiry"></div>
                             </div>

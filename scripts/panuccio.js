@@ -331,6 +331,7 @@ function processData(dataCollection, urlString) {
     //send enquiry via ajax
     $.post(urlString, dataCollection, function(data) {
        var obj = JSON.parse(data);
+       //alert(obj.form + " " + obj.result);       
        window.location = "index.php?pg=result&frm=" + obj.form + "&r=" + obj.result;
     });
 //    $.ajax({
